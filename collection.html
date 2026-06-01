@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Doll Collection | Her Doll Diary</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html">Her Doll Diary</a>
+      <nav aria-label="Main navigation">
+        <a href="./index.html">Home</a>
+        <a aria-current="page" href="./collection.html">Collection</a>
+        <a href="./birthday.html">Birthday</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-intro">
+        <p class="eyebrow">The collection</p>
+        <h1>Every doll gets a tiny love note.</h1>
+        <p>
+          A soft gallery for the dolls she loves, each one saved with a small
+          caption and a little bit of birthday sweetness.
+        </p>
+        <button class="button ghost edit-toggle" id="editToggle" type="button">
+          Edit Collection
+        </button>
+      </section>
+
+      <div class="editor-area" id="editorArea" hidden>
+        <section class="studio" aria-label="Add a doll">
+          <div class="studio-panel">
+            <h2>Add a doll</h2>
+            <label>
+              Photo
+              <input id="photoInput" type="file" accept="image/*" />
+            </label>
+            <label>
+              Doll name
+              <input id="nameInput" type="text" placeholder="Example: Mimi" />
+            </label>
+            <div class="field-row">
+              <label>
+                Main color
+                <input id="colorInput" type="text" placeholder="pink, cream, blue" />
+              </label>
+              <label>
+                Doll type
+                <input id="typeInput" type="text" placeholder="bunny, bear, princess" />
+              </label>
+            </div>
+            <label>
+              Cute detail
+              <input id="detailInput" type="text" placeholder="ribbon, sleepy face, tiny dress" />
+            </label>
+            <label>
+              Caption
+              <textarea id="captionInput" rows="4" placeholder="Generate one or write your own."></textarea>
+            </label>
+            <div class="studio-actions">
+              <button class="button ghost" id="captionButton" type="button">Generate Caption</button>
+              <button class="button primary" id="addButton" type="button">Add Doll</button>
+            </div>
+          </div>
+          <div class="preview-panel">
+            <div id="photoPreview" class="photo-preview">
+              <span>No photo yet</span>
+            </div>
+            <p>
+              Photos are saved only in this browser for now. Use export after
+              adding real dolls so you can keep a backup.
+            </p>
+          </div>
+        </section>
+
+        <section class="collection-tools">
+          <button class="button ghost" id="exportButton" type="button">Export Backup</button>
+          <label class="button ghost file-button">
+            Import Backup
+            <input id="importInput" type="file" accept="application/json" />
+          </label>
+          <button class="button danger" id="clearButton" type="button">Clear Saved Dolls</button>
+        </section>
+      </div>
+
+      <section>
+        <div class="section-heading">
+          <p class="eyebrow">Gallery</p>
+          <h2>Her little friends</h2>
+        </div>
+        <div id="collectionGrid" class="doll-grid"></div>
+      </section>
+    </main>
+
+    <footer>Made for her favorite little friends.</footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
