@@ -8,7 +8,7 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="./index.html">Her Doll Diary</a>
+      <a class="brand" href="./index.html" id="siteTitle">Her Doll Diary</a>
       <nav aria-label="Main navigation">
         <a href="./index.html">Home</a>
         <a href="./collection.html">Collection</a>
@@ -18,30 +18,12 @@
 
     <main>
       <section class="birthday-hero">
-        <p class="eyebrow">A birthday page just for her</p>
-        <h1>Happy birthday, my favorite person.</h1>
-        <p>
-          I made this little place because the things you love deserve a home,
-          and you deserve to be celebrated in a way that feels soft, personal,
-          and completely yours.
-        </p>
+        <p class="eyebrow" id="birthdayEyebrow">A birthday page just for her</p>
+        <h1 id="birthdayHeadline">Happy birthday, my favorite person.</h1>
+        <p id="birthdayIntro"></p>
       </section>
 
-      <section class="letter">
-        <p>Dear love,</p>
-        <p>
-          Happy birthday. I hope this year gives you the same comfort and joy
-          that you give to the people around you. I love the way you care about
-          small details, the way you make cute things feel even cuter, and the
-          way your happiness can brighten an ordinary day.
-        </p>
-        <p>
-          This website is my tiny gift to you: a diary for your dolls, your
-          memories, and all the little stories we will keep adding together. I
-          hope every time you open it, it feels like a warm hug saved inside a
-          page.
-        </p>
-        <p>With all my love,<br />Your boyfriend</p>
+      <section class="letter" id="birthdayLetter"></section>
       </section>
 
       <section class="wish-grid">
@@ -63,5 +45,29 @@
     <footer>
       Happy birthday, sweetheart.
     </footer>
+    <script src="./content/content.js"></script>
+    <script>
+      (async () => {
+        try {
+          const site = await window.DollDiaryContent.loadJson("./content/site.json");
+          window.DollDiaryContent.setText("#siteTitle", site.siteTitle);
+          window.DollDiaryContent.setText("#birthdayEyebrow", site.birthdayEyebrow);
+          window.DollDiaryContent.setText("#birthdayHeadline", site.birthdayHeadline);
+          window.DollDiaryContent.setText("#birthdayIntro", site.birthdayIntro);
+
+          const letter = document.querySelector("#birthdayLetter");
+          if (!letter) return;
+
+          const paras = Array.isArray(site.birthdayLetter) ? site.birthdayLetter : [];
+          const signature1 = site.signatureLine1 || "";
+          const signature2 = site.signatureLine2 || "";
+
+          letter.innerHTML = [
+            ...paras.map((p) => `<p>${String(p)}</p>`),
+            `<p>${signature1 ? String(signature1) : ""}${signature2 ? `<br />${String(signature2)}` : ""}</p>`
+          ].join("");
+        } catch {}
+      })();
+    </script>
   </body>
 </html>

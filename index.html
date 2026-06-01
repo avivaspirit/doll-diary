@@ -8,7 +8,7 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="./index.html">Her Doll Diary</a>
+      <a class="brand" href="./index.html" id="siteTitle">Her Doll Diary</a>
       <nav aria-label="Main navigation">
         <a aria-current="page" href="./index.html">Home</a>
         <a href="./collection.html">Collection</a>
@@ -19,12 +19,9 @@
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">A tiny private museum</p>
-          <h1>A cozy diary for her sweetest doll collection.</h1>
-          <p>
-            A soft little place for every doll she loves, the stories behind
-            them, and a birthday note kept just for the two of you.
-          </p>
+          <p class="eyebrow" id="homeEyebrow">A tiny private museum</p>
+          <h1 id="homeHeadline">A cozy diary for her sweetest doll collection.</h1>
+          <p id="homeDescription"></p>
           <div class="hero-actions">
             <a class="button primary" href="./collection.html">Open Collection</a>
             <a class="button ghost" href="./birthday.html">Birthday Page</a>
@@ -45,14 +42,13 @@
 
       <section class="bio-section">
         <div>
-          <p class="eyebrow">Mini bio</p>
-          <h2>The girl this diary belongs to</h2>
+          <p class="eyebrow" id="bioEyebrow">Mini bio</p>
+          <h2 id="bioTitle">The girl this diary belongs to</h2>
         </div>
-        <p>
-          She is the kind of person who can make small things feel precious.
-          Every doll here is part of her gentle little universe: soft colors,
-          cute faces, tiny outfits, and memories worth keeping.
-        </p>
+        <div class="bio-right">
+          <img class="bio-photo" id="bioPhoto" alt="Bio photo" hidden />
+          <p id="bioText"></p>
+        </div>
       </section>
 
       <section class="preview-grid" aria-label="Website sections">
@@ -77,5 +73,22 @@
     <footer>
       Made for a birthday, a collection, and one very loved girl.
     </footer>
+    <script src="./content/content.js"></script>
+    <script>
+      (async () => {
+        try {
+          const site = await window.DollDiaryContent.loadJson("./content/site.json");
+          window.DollDiaryContent.setText("#siteTitle", site.siteTitle);
+          document.title = site.siteTitle || document.title;
+          window.DollDiaryContent.setText("#homeEyebrow", site.homeEyebrow);
+          window.DollDiaryContent.setText("#homeHeadline", site.homeHeadline);
+          window.DollDiaryContent.setText("#homeDescription", site.homeDescription);
+          window.DollDiaryContent.setText("#bioEyebrow", site.bioEyebrow);
+          window.DollDiaryContent.setText("#bioTitle", site.bioTitle);
+          window.DollDiaryContent.setText("#bioText", site.bioText);
+          window.DollDiaryContent.setImage("#bioPhoto", site.bioPhoto, "Photo of her");
+        } catch {}
+      })();
+    </script>
   </body>
 </html>

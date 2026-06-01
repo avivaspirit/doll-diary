@@ -8,7 +8,7 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="./index.html">Her Doll Diary</a>
+      <a class="brand" href="./index.html" id="siteTitle">Her Doll Diary</a>
       <nav aria-label="Main navigation">
         <a href="./index.html">Home</a>
         <a aria-current="page" href="./collection.html">Collection</a>
@@ -24,66 +24,7 @@
           A soft gallery for the dolls she loves, each one saved with a small
           caption and a little bit of birthday sweetness.
         </p>
-        <button class="button ghost edit-toggle" id="editToggle" type="button">
-          Edit Collection
-        </button>
       </section>
-
-      <div class="editor-area" id="editorArea" hidden>
-        <section class="studio" aria-label="Add a doll">
-          <div class="studio-panel">
-            <h2>Add a doll</h2>
-            <label>
-              Photo
-              <input id="photoInput" type="file" accept="image/*" />
-            </label>
-            <label>
-              Doll name
-              <input id="nameInput" type="text" placeholder="Example: Mimi" />
-            </label>
-            <div class="field-row">
-              <label>
-                Main color
-                <input id="colorInput" type="text" placeholder="pink, cream, blue" />
-              </label>
-              <label>
-                Doll type
-                <input id="typeInput" type="text" placeholder="bunny, bear, princess" />
-              </label>
-            </div>
-            <label>
-              Cute detail
-              <input id="detailInput" type="text" placeholder="ribbon, sleepy face, tiny dress" />
-            </label>
-            <label>
-              Caption
-              <textarea id="captionInput" rows="4" placeholder="Generate one or write your own."></textarea>
-            </label>
-            <div class="studio-actions">
-              <button class="button ghost" id="captionButton" type="button">Generate Caption</button>
-              <button class="button primary" id="addButton" type="button">Add Doll</button>
-            </div>
-          </div>
-          <div class="preview-panel">
-            <div id="photoPreview" class="photo-preview">
-              <span>No photo yet</span>
-            </div>
-            <p>
-              Photos are saved only in this browser for now. Use export after
-              adding real dolls so you can keep a backup.
-            </p>
-          </div>
-        </section>
-
-        <section class="collection-tools">
-          <button class="button ghost" id="exportButton" type="button">Export Backup</button>
-          <label class="button ghost file-button">
-            Import Backup
-            <input id="importInput" type="file" accept="application/json" />
-          </label>
-          <button class="button danger" id="clearButton" type="button">Clear Saved Dolls</button>
-        </section>
-      </div>
 
       <section>
         <div class="section-heading">
@@ -95,7 +36,7 @@
     </main>
 
     <footer>Made for her favorite little friends.</footer>
-
+    <script src="./content/content.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
